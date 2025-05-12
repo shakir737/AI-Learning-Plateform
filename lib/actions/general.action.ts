@@ -118,7 +118,7 @@ export async function getInterviewsByUserId(
 ): Promise<Interview[] | null> {
   const interviews = await db
     .collection("interviews")
-    .where("userId", "==", userId)
+    .where("userid", "==", userId)
     .orderBy("createdAt", "desc")
     .get();
 
