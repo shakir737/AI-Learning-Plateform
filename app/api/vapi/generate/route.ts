@@ -5,7 +5,8 @@ import { db } from "@/firebase/admin";
 import { getRandomInterviewCover } from "@/lib/utils";
 
 export async function POST(request: Request) {
-  const { type, role, level, techstack, amount, userid } = await request.json();
+  const { type, role, level, techstack, amount, userid, language } =
+    await request.json();
 
   try {
     const { text: questions } = await generateText({
@@ -34,6 +35,7 @@ export async function POST(request: Request) {
       userId: userid,
       finalized: true,
       coverImage: getRandomInterviewCover(),
+      language: language,
       createdAt: new Date().toISOString(),
     };
 

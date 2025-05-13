@@ -22,6 +22,7 @@ interface Interview {
   createdAt: string;
   userId: string;
   type: string;
+  language: string;
   finalized: boolean;
 }
 
@@ -44,6 +45,7 @@ interface InterviewCardProps {
   role: string;
   type: string;
   techstack: string[];
+  language: string;
   createdAt?: string;
 }
 
@@ -91,6 +93,7 @@ interface InterviewFormProps {
   level: string;
   type: string;
   techstack: string[];
+  language: string;
   amount: number;
 }
 
