@@ -102,15 +102,15 @@ export async function getLatestInterviews(
     .where("userId", "!=", userId)
     // .limit(limit)
     .get();
-  
-    if (interviews.empty) {
-      return null;
-    }
-    else{
-  return interviews.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  })) as Interview[]};
+
+  if (interviews.empty) {
+    return null;
+  } else {
+    return interviews.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    })) as Interview[];
+  }
 }
 
 export async function getInterviewsByUserId(
@@ -118,16 +118,16 @@ export async function getInterviewsByUserId(
 ): Promise<Interview[] | null> {
   const interviews = await db
     .collection("interviews")
-    .where("userid", "==", userId)
+    .where("userId", "==", userId)
     .orderBy("createdAt", "desc")
     .get();
 
-    if (interviews.empty) {
-      return null;
-    }
-    else{
-  return interviews.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  })) as Interview[]};
+  if (interviews.empty) {
+    return null;
+  } else {
+    return interviews.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    })) as Interview[];
+  }
 }
